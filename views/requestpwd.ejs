@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel='stylesheet' href='/stylesheets/destyle.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+  <title>パスワード更新</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <% if (flashMessages) { %>
+      <% if (flashMessages.success) { %>
+        <div class="flashes alert">
+          <div class="flash success"><%= flashMessages.success %></div>
+        </div>
+      <% } else if (flashMessages.error) { %>
+        <div class="flashes alert">
+          <div class="flash error alert-danger"><%= flashMessages.error %></div>
+        </div>
+      <% } %>
+    <% } %>
+    <h1 class="main-header">パスワード更新</h1>
+    <div>
+      <div>
+        メールアドレスを入力し「送信」を押してください。
+      </div>
+      <form method="POST" action="/users/requestpwd">
+        <label>メールアドレス：</label>
+        <input class="form-item-style" type="email" name="email"
+  pattern="^[a-zA-Z0-9.!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$" required>
+        <input type="submit" class="btn-link" value="送信" />
+      </form>
+    </div>
+  </div>
+</body>
+</html>

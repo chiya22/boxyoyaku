@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel='stylesheet' href='/stylesheets/destyle.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+  <title>BOX予約</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <!-- <% if (message && message.length !== 0) { %>
+      <div class="alert">
+        <p class="alert-danger">
+          <%= message %>
+        </p>
+      </div>
+    <% } %> -->
+    <% if (flashMessages) { %>
+      <% if (flashMessages.success) { %>
+        <div class="flashes alert">
+          <div class="flash success"><%= flashMessages.success %></div>
+        </div>
+      <% } else if (flashMessages.error) { %>
+        <div class="flashes alert">
+          <div class="flash error alert-danger"><%= flashMessages.error %></div>
+        </div>
+      <% } %>
+    <% } %>
+    <div class="login-header-img">
+      <img src="/images/building_logo.svg">
+    </div>
+    <form action="/login" method="post">
+      <div class="form-area">
+        <div>
+          <input class="form-item-style" type="text" name="username" placeholder="ID" autofocus />
+        </div>
+        <div>
+          <input class="form-item-style" type="password" name="password" placeholder="パスワード" />
+        </div>
+        <div>
+          <input class="btn-link" type="submit" value="ログイン" />
+        </div>
+        <a class="btn-link" href="/users/request">新規登録</a>
+        <a class="btn-link" href="/users/requestpwd">パスワード忘れ</a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

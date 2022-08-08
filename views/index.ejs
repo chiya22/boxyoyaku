@@ -22,6 +22,36 @@
       <% } %>
     <% } %>
     <h1 class="main-header"><%= user.name %></h1>
+    <hr>
+    <div><%= date.slice(0,4) %>/<%= date.slice(4,6) %>/<%= date.slice(-2) %></div>
+    <a href="/change/<%= datebefore %>_<%= box.id %>">前の日付</a>
+    <a href="/change/<%= dateafter %>_<%= box.id %>">次の日付</a>
+    <hr>
+    <div><%= box.name %></div>
+    <!-- 予約済情報-->
+    <hr>
+    <% if (boxyoyakued) { %>
+      <div>
+        <%= boxyoyakued.id_user %></br>
+        <%= boxyoyakued.ymd_yoyaku %></br>
+        <%= boxyoyakued.id_room %></br>
+        <%= boxyoyakued.time_start %></br>
+        <%= boxyoyakued.time_end %></br>
+        <%= boxyoyakued.ymdhms_add %></br>
+        <%= boxyoyakued.ymdhms_del %></br>
+      </div>
+    <% } %>
+    <!-- 予約情報　-->
+    <hr>
+    <% if (boxyoyakus) { %>
+    <%  const keys = Object.keys(boxyoyakus).sort() %>
+    <%  for (key of keys) { %>
+        <div id="<%= key %>">
+          <div><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
+          <div><%= boxyoyakus[key].name %></div>
+        </div>
+    <%  } %>
+    <% } %>
     <div class="btn-footer">
       <a class="btn-link-big" href="/users/updatepwd">パスワード変更</a>
       <form method="POST" action="/logout">

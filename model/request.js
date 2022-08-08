@@ -4,7 +4,7 @@ const logger = log4js.configure("./config/log4js-config.json").getLogger();
 
 const findPKey = async (id, key) => {
     try {
-        const retObj = await knex.from("request").where([{id: id},{key: key}])
+        const retObj = await knex.from("request").where({id: id}).andWhere({key: key});
         return retObj[0];
     } catch(err) {
         throw err;

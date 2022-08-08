@@ -32,6 +32,36 @@ const getYYYYMMDDhhmmss = (date) => {
 }
 
 /**
+ * yyyymmdd形式の文字列より、1日前のyyyymmdd形式の文字列を返却する
+ * @param {*} YYYYMMDD 
+ * @returns パラメータで指定されたYYYYMMDDの1日前
+ */
+ const getYYYYMMDDBefore = (YYYYMMDD) => {
+  let beforedate = new Date(YYYYMMDD.slice(0, 4), YYYYMMDD.slice(4,6),YYYYMMDD.slice(-2));
+  beforedate.setDate(beforedate.getDate() - 1);
+  let tmp;
+  tmp = '' + beforedate.getFullYear();
+  tmp += '' + ('0' + (beforedate.getMonth())).slice(-2);
+  tmp += '' + ('0' + beforedate.getDate()).slice(-2);
+  return tmp
+}
+
+/**
+ * yyyymmdd形式の文字列より、1日後のyyyymmdd形式の文字列を返却する
+ * @param {*} YYYYMMDD 
+ * @returns パラメータで指定されたYYYYMMDDの1日後
+ */
+ const getYYYYMMDDAfter = (YYYYMMDD) => {
+  let afterdate = new Date(YYYYMMDD.slice(0, 4), YYYYMMDD.slice(4,6),YYYYMMDD.slice(-2));
+  afterdate.setDate(afterdate.getDate() + 1);
+  let tmp;
+  tmp = '' + afterdate.getFullYear();
+  tmp += '' + ('0' + (afterdate.getMonth())).slice(-2);
+  tmp += '' + ('0' + afterdate.getDate()).slice(-2);
+  return tmp
+}
+
+/**
  * 年月より年月日のリストを取得する
  * @param {*} yyyymm 
  * @returns 
@@ -48,10 +78,42 @@ const getYyyymmddByYyyymm = (yyyymm) => {
   return retYyyymmdd;
 }
 
+/**
+ * HHMM形式を変換して分で返却する
+ * @param {*} hhmm HHMM形式
+ * @returns 分（例：0130の場合、90）
+ */
+const getMByHhmm = (hhmm) => {
+
+  const h = Number(hhmm.slice(0,2)) * 60
+  const m = Number(hhmm.slice(-2))
+  return h + m;
+
+}
+
+/**
+ * 分をHHMM形式で返却する
+ * @param {*} m 分
+ * @returns HHMM形式（例：90分の場合、0130）
+ */
+const getHhmmByM = (m) => {
+  if (m !== 0) {
+    const hh = ("0" + String(Math.floor(m / 60))).slice(-2);
+    const mm = ("0" + String(m % 60)).slice(-2);6
+    return hh + mm;
+  } else {
+    return "0000";
+  }
+}
+
 
 module.exports = {
   returnvalue,
   getYYYYMMDD,
+  getYYYYMMDDBefore,
+  getYYYYMMDDAfter,
   getYYYYMMDDhhmmss,
   getYyyymmddByYyyymm,
+  getMByHhmm,
+  getHhmmByM,
 };

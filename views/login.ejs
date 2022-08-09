@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <link rel='stylesheet' href='/stylesheets/destyle.css' />
-  <link rel='stylesheet' href='/stylesheets/style.css' />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
-  <title>BOX予約</title>
+  <head>
+    <title>予約システム</title>
+    <%- include("./common/stylesheets.ejs") %>
+  </head>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
       <% } %>
     <% } %>
     <div class="login-header-img">
-      <img src="/images/building_logo.svg">
+      <img src="/static/images/building_logo.svg">
     </div>
     <form action="/login" method="post">
       <div class="form-area">

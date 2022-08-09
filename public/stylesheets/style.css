@@ -4,6 +4,49 @@ body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
+.select_room_area {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  visibility: hidden;
+}
+.select_room_area_inner {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 500px;
+  text-align: center;
+  padding: 2rem;
+}
+.select_time_area {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  visibility: hidden;
+}
+.select_time_area_inner {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 500px;
+  text-align: center;
+  padding: 2rem;
+}
+
+
+
+
+
 .bgcolor-admin {
   background-color: #D1F2A0;
 }

@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 //セッションの有効化
 const session = require('express-session');
 app.use(session({
-  secret: "boxyoyaku-secret",
+  secret: "roomyoyaku-secret",
   resave: false,
   saveUninitialized: true,
   name: "sid",

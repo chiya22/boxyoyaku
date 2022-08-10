@@ -2,9 +2,9 @@ const knex = require('../db/knex.js').connect();
 const log4js = require("log4js");
 const logger = log4js.configure("./config/log4js-config.json").getLogger();
 
-const findPKey = async (id, key) => {
+const findPKey = async (email, key) => {
     try {
-        const retObj = await knex.from("request").where({id: id}).andWhere({key: key});
+        const retObj = await knex.from("request").where({email: email}).andWhere({key: key});
         return retObj[0];
     } catch(err) {
         throw err;
@@ -31,7 +31,7 @@ const find = async () => {
 
 const insert = async (inObj) => {
     try {
-        const query = "insert into request ( id, key, kubun, ymd_limit ) values ('" + inObj.id + "','" + inObj.key + "','" + inObj.kubun + "','" + inObj.ymd_limit + "')";
+        const query = "insert into request ( email, key, kubun, ymd_limit ) values ('" + inObj.email + "','" + inObj.key + "','" + inObj.kubun + "','" + inObj.ymd_limit + "')";
         logger.info(query);
         const retObj = await knex.raw(query)
         return retObj;

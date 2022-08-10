@@ -11,6 +11,15 @@ const findPKey = async (id) => {
     }
 };
 
+const findByEmail = async (email) => {
+    try {
+        const retObj = await knex.from("users").where({email: email})
+        return retObj[0];
+    } catch(err) {
+        throw err;
+    }
+};
+
 const find = async () => {
     try {
         const retObj = await knex.from("users").orderBy([{column: 'ymdhms_add', order:'desc'}])
@@ -22,7 +31,7 @@ const find = async () => {
 
 const insert = async (inObj) => {
     try {
-        const query = "insert into users ( id, name, name_company, password, ymdhms_add, ymdhms_upd, ymdhms_del ) values ('" + inObj.id + "','" + inObj.name + "','" + inObj.name_company + "','" + inObj.password + "','" + inObj.ymdhms_add + "','" + inObj.ymdhms_upd + "','" + inObj.ymdhms_del + "')";
+        const query = "insert into users ( id, name, name_company, email, password, ymdhms_add, ymdhms_upd, ymdhms_del ) values ('" + inObj.id + "','" + inObj.name + "','" + inObj.name_company + "','" + inObj.email + "','" + inObj.password + "','" + inObj.ymdhms_add + "','" + inObj.ymdhms_upd + "','" + inObj.ymdhms_del + "')";
         logger.info(query);
         const retObj = await knex.raw(query)
         return retObj;
@@ -35,9 +44,9 @@ const update = async (inObj) => {
     try {
         let query;
         if (inObj.password) {
-            query = "update users set name = '" + inObj.name + "', name_company = '" + inObj.name_company + "', password = '" + inObj.password + "', ymdhms_add = '" + inObj.ymdhms_add + "', ymdhms_upd = '" + inObj.ymdhms_upd + "', ymdhms_del = '" + inObj.ymdhms_del + "' where id = '" + inObj.id + "'";
+            query = "update users set name = '" + inObj.name + "', name_company = '" + inObj.name_company + "', email = '" + inObj.email + "', password = '" + inObj.password + "', ymdhms_add = '" + inObj.ymdhms_add + "', ymdhms_upd = '" + inObj.ymdhms_upd + "', ymdhms_del = '" + inObj.ymdhms_del + "' where id = '" + inObj.id + "'";
         } else {
-            query = "update users set name = '" + inObj.name + "', name_company = '" + inObj.name_company + "', ymdhms_add = '" + inObj.ymdhms_add + "', ymdhms_upd = '" + inObj.ymdhms_upd + "', ymdhms_del = '" + inObj.ymdhms_del + "' where id = '" + inObj.id + "'";
+            query = "update users set name = '" + inObj.name + "', name_company = '" + inObj.name_company + "', email = '" + inObj.email + "', ymdhms_add = '" + inObj.ymdhms_add + "', ymdhms_upd = '" + inObj.ymdhms_upd + "', ymdhms_del = '" + inObj.ymdhms_del + "' where id = '" + inObj.id + "'";
         }
         logger.info(query);
         const retObj = await knex.raw(query)
@@ -60,6 +69,7 @@ const remove = async (id) => {
 module.exports = {
     find,
     findPKey,
+    findByEmail,
     insert,
     update,
     remove,

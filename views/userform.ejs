@@ -26,25 +26,37 @@
       <div class="form-area">
       <% if (mode === 'add') { %>
         <h1 class="main-header">ユーザー登録</h1>
-        <div><input class="form-item-readonly-style" type="text" name="id" placeholder="ID" value="<%= user.id %>" readonly required></div> 
-        <div><input class="form-item-style" type="text" name="name" placeholder="名前" autofocus required></div> 
+        <div><input class="form-item-style" type="text" name="id" placeholder="ID" value="<%= user.id %>" autofocus required></div> 
+        <div><input class="form-item-style" type="text" name="name" placeholder="名前" required></div> 
         <div><input class="form-item-style" type="text" name="name_company" placeholder="会社名" required></div> 
+        <div><input class="form-item-readonly-style" type="email" name="email" value="<%= user.email %>" placeholder="メールアドレス" readonly></div> 
         <div><input class="form-item-style" type="password" name="password" placeholder="パスワード" required></div> 
         <input class="btn-update" type="button" id="btn_insert" value="登録">
 
       <% } else { %>
 
-        <h1 class="main-header">パスワード更新</h1>
-        <div><input class="form-item-readonly-style" type="text" name="id" placeholder="ID" value="<%= user.id %>" readonly></div>
         <% if (mode === 'updpwd') { %>
-          <div><input class="form-item-readonly-style" type="text" name="name" value="<%= user.name %>" readonly></div>
-          <div><input class="form-item-readonly-style" type="text" name="name_company" value="<%= user.name_company %>" readonly></div>
-          <div><input class="form-item-style" type="password" name="password" placeholder="パスワード" value="" autofocus required></div>  
-        <% } %>
-        <input class="btn-update" type="button" id="btn_update" value="更新">
+          <h1 class="main-header">パスワード更新</h1>
+          <div><input class="form-item-readonly-style" type="text" name="id" placeholder="ID" value="<%= user.id %>" readonly></div>
+            <div><input class="form-item-readonly-style" type="text" name="name" value="<%= user.name %>" readonly></div>
+            <div><input class="form-item-readonly-style" type="text" name="name_company" value="<%= user.name_company %>" readonly></div>
+            <div><input class="form-item-readonly-style" type="email" name="email" value="<%= user.email %>" readonly></div>
+            <div><input class="form-item-style" type="password" name="password" placeholder="パスワード" value="" autofocus required></div>  
+        <% } else { %>
+          <h1 class="main-header">ユーザー情報編集</h1>
+          <div><input class="form-item-readonly-style" type="text" name="id" placeholder="ID" value="<%= user.id %>" readonly></div>
+          <div><input class="form-item-style" type="text" name="name" value="<%= user.name %>" autofocus required></div>
+          <div><input class="form-item-style" type="text" name="name_company" value="<%= user.name_company %>" required></div>
+          <div><input class="form-item-style" type="email" name="email" value="<%= user.email %>" required></div>
+          <div><input class="form-item-style" type="password" name="password" placeholder="パスワード" value=""></div>
+          ※パスワードを更新しない場合は何も入力しないでください
+          <% } %>
+          <input class="btn-update" type="button" id="btn_update" value="更新">
+          <a href="/">キャンセル</a>
         <input type="hidden" name="ymdhms_add" value="<%= user.ymdhms_add %>">
         <input type="hidden" name="ymdhms_upd" value="<%= user.ymdhms_upd %>">
         <input type="hidden" name="ymdhms_del" value="<%= user.ymdhms_del %>">
+
       <% } %>
       <input type="hidden" name="mode" value="<%= mode %>">
       <input type="hidden" name="key" value="<%= key %>">
@@ -61,11 +73,19 @@
       })
     }
     let updatebtn = document.getElementById("btn_update");
+    const mode = document.getElementsByName("mode")[0].value;
     if (updatebtn) {
-      updatebtn.addEventListener("click", () => {
-        document.userform.action = "/users/updpwd";
-        document.userform.submit();
-      })
+      if (mode === 'updpwd') {
+        updatebtn.addEventListener("click", () => {
+          document.userform.action = "/users/updpwd";
+          document.userform.submit();
+        })
+      } else {
+        updatebtn.addEventListener("click", () => {
+          document.userform.action = "/users/updinfo";
+          document.userform.submit();
+        })
+      }
     }
   </script>
 </body>

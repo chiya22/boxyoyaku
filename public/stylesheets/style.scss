@@ -1,3 +1,11 @@
+$base-color: #243856;
+$base-color-hover: #ffffff;
+$second-color: #8a8a8a;
+$second-color-hover: #d3eced;
+$base-bg-color: #243856;
+$second-bg-color: #8a8a8a;
+
+
 body {
   /* padding: 50px; */
   font-size: 16px;
@@ -5,9 +13,9 @@ body {
 }
 
 .main-container {
-  width: 100%;
+  width:100%;
   max-width: 375px;
-  margin: 50px auto;
+  margin:50px auto;
 }
 
 .form-item-style {
@@ -22,12 +30,11 @@ body {
   letter-spacing: 0.8px;
   margin-bottom: 10px;
   text-align: left;
+  &:focus {
+    border: 1px solid #F93115;
+    background-color: #f0dad8;
+  }
 }
-.form-item-style:focus {
-  border: 1px solid #F93115;
-  background-color: #f0dad8;
-}
-
 .form-item-readonly-style {
   color: #8a8a8a;
   height: 30px;
@@ -38,6 +45,7 @@ body {
   text-align: left;
 }
 
+// 部屋選択メッセージエリア
 .select_room_area {
   width: 100%;
   height: 100%;
@@ -46,7 +54,6 @@ body {
   z-index: 100;
   visibility: hidden;
 }
-
 .select_room_area_inner {
   position: relative;
   top: 30%;
@@ -58,7 +65,7 @@ body {
   text-align: center;
   padding: 2rem;
 }
-
+// 時間選択メッセージエリア
 .select_time_area {
   width: 100%;
   height: 100%;
@@ -67,7 +74,6 @@ body {
   z-index: 100;
   visibility: hidden;
 }
-
 .select_time_area_inner {
   position: relative;
   top: 30%;
@@ -80,10 +86,12 @@ body {
   padding: 2rem;
 }
 
+// フォーム入力エリア
 .form-area {
   text-align: center;
 }
 
+// submitボタン
 .submit-btn {
   border: 1px solid #F93115;
   background-color: #fff;
@@ -94,68 +102,75 @@ body {
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
-}
-.submit-btn:hover {
-  background-color: #F93115;
-  color: #fff;
+  &:hover {
+    background-color: #F93115;
+    color: #fff;
+  }
 }
 
+// リンク
 .link-area {
   margin: 20px 0;
 }
-
 .link-btn {
   width: 80px;
   margin: 10px 5px;
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
-}
-.link-btn:hover {
-  border: 1px solid #000;
+  &:hover {
+    border: 1px solid #000;
+  }
 }
 
+// メッセージ領域
 .flashes {
-  display: inline-block;
+  display:inline-block;
 }
-
 .flash {
-  font-size: 14px;
+  font-size:14px;
   padding: 10px 30px;
   border-radius: 15px;
   line-height: 1.2rem;
 }
-
 .success {
-  color: #257375;
+  color:#257375;
   background-color: #a9d4d9;
 }
-
 .error {
-  color: #631c32;
+  color:#631c32;
   background-color: #e4cad2;
 }
 
+
+// ログイン画面
 .login-header-img {
   width: 200px;
   margin: auto;
-  padding-bottom: 20px;
+  padding-bottom:20px;
 }
+
+
+
+
+
+
+
+
 
 .bgcolor-admin {
   background-color: #D1F2A0;
 }
-
 .alert {
   display: block;
   text-align: center;
   margin-bottom: 20px;
 }
-
 .alert-danger {
-  color: #FF0000;
+  color:#FF0000;
   font-size: 0.875rem;
 }
+
 
 .main-header {
   width: 100%;
@@ -163,11 +178,11 @@ body {
   text-align: center;
   font-size: 25px;
   font-weight: bold;
-  color: #2A4F27;
+  color: #2A4F27
 }
 
 .row-yyyymm {
-  margin-bottom: 20px;
+  margin-bottom:20px;
 }
 
 .btn {
@@ -179,9 +194,8 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .btn-end {
   display: block;
   background-color: #c0c0c0;
@@ -191,9 +205,8 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .btn-kakutei {
   display: block;
   background-color: #fff;
@@ -204,7 +217,7 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .btn:hover,
@@ -218,7 +231,6 @@ body {
 .btn-admin-disabled:hover {
   transform: scale(1.1);
 }
-
 .btn-disabled {
   display: block;
   background-color: #c0c0c0;
@@ -229,13 +241,11 @@ body {
   text-align: center;
   border-radius: 10px;
 }
-
 .btn-footer {
   width: 100%;
   margin: auto;
   text-align: center;
 }
-
 .btn-link-big {
   background-color: #004C00;
   color: #fff;
@@ -246,7 +256,6 @@ body {
   border-radius: 10px;
   font-size: 12px;
 }
-
 .btn-update {
   background-color: #F93115;
   color: #fff;
@@ -256,9 +265,8 @@ body {
   padding: 15px;
   border-radius: 10px;
   font-size: 12px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .btn-delete {
   background-color: #799973;
   color: #fff;
@@ -268,7 +276,7 @@ body {
   padding: 15px;
   border-radius: 10px;
   font-size: 12px;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .btn-admin {
@@ -280,9 +288,8 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .btn-admin-kakutei {
   display: inline-block;
   background-color: #6fb495;
@@ -292,9 +299,8 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .btn-admin-disabled {
   display: inline-block;
   background-color: #a3a29e;
@@ -304,14 +310,13 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .btn-admin-inner,
 .btn-admin-inner-disabled {
   margin-top: 10px;
 }
-
 .btn-inner-setteing,
 .btn-inner-kibou,
 .btn-inner-kakutei,
@@ -320,36 +325,33 @@ body {
   border: 1px solid #fff;
   border-radius: 10px;
   padding: 5px 10px;
-  margin: 0 3px;
+  margin:0 3px;
 }
-
 .btn-inner-setteing:hover,
 .btn-inner-kibou:hover,
 .btn-inner-kakutei:hover,
 .btn-inner-download:hover {
   background: #fff;
-  color: #15A82B;
+  color:#15A82B;
 }
 
 .admin-title {
-  font-size: 14px;
+  font-size:14px;
 }
-
 /* .btn-link:hover {
   border: 1px solid #000;
   background-color: #fff;
   color: #333;
 } */
 .row {
-  display: inline-block;
+  display:inline-block;
   width: 100%;
   margin: auto;
   padding: 5px 5px;
   text-align: center;
 }
-
 .row-kakutei {
-  display: flex;
+  display:flex;
   flex-direction: row;
   width: 100%;
   /* border: 1px solid #000; */
@@ -363,64 +365,54 @@ body {
   width: 20px;
   margin-right: 10px;
 }
-
 .img-icon-oso {
   width: 18px;
   margin-left: 3px;
   margin-right: 10px;
 }
-
 .row-left {
   display: flex;
   flex-direction: column;
   flex-basis: 40%;
   text-align: center;
-  padding: 10px;
+  padding:10px;
 }
-
 .row-left-top {
-  font-size: 16px;
+  font-size:16px;
   font-weight: bold;
 }
-
 .row-left-under {
-  padding-top: 5px;
-  font-size: 14px;
+  padding-top:5px;
+  font-size:14px;
 }
-
 .row-right {
   display: flex;
   flex-direction: column;
   flex-basis: 60%;
 }
-
 .row-right-top,
 .row-right-under {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
 }
-
 .row-right-top-left,
 .row-right-under-left {
   display: inline-block;
 }
-
 .row-right-top-right,
 .row-right-under-right {
   display: inline-block;
   height: 20px;
-  padding: 5px;
+  padding:5px;
 }
-
 .row-active {
   font-weight: bold;
   background: linear-gradient(transparent 0, yellow 0);
-  padding: 2px 5px;
+  padding:2px 5px;
 }
-
 .row-nonactive {
-  padding: 2px 5px;
+  padding:2px 5px;
 }
 
 .row-header {
@@ -429,43 +421,36 @@ body {
   padding: 10px;
   /* margin-right: 5px; */
 }
-
 .row-header-color-holiday {
   color: #F93115;
 }
-
 .row-header-color-saturday {
   color: #0000FF;
 }
-
 .row-header-color {
-  color: #333;
+  color:#333;
 }
 
 .row-radio {
   position: relative;
   flex: 1;
   border: 1px solid #b6b6b6;
-  margin: auto 5px;
+  margin:auto 5px;
   width: 100%;
 }
-
 .inline-radio {
   display: flex;
   border-radius: 3px;
-  overflow: hidden;
+  overflow:hidden;
 }
-
 .row-radio-input {
   width: 100%;
   height: 30px;
   opacity: 0;
 }
-
 .row-radio-label {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   color: #b6b6b6;
   width: 100%;
   height: 100%;
@@ -474,9 +459,8 @@ body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  font-size: 10px;
+  font-size:10px;
 }
-
 .row-radio-input:checked + label {
   background: #15A82B;
   font-weight: 500;
@@ -485,8 +469,8 @@ body {
 
 .form-memo-style {
   color: #333;
-  resize: none;
-  width: 90%;
+  resize:none;
+  width:90%;
   height: 100px;
   padding: 10px 5%;
   border: 1px solid #ccc;
@@ -502,16 +486,13 @@ body {
 .yms-radio {
   margin: 10px auto 20px auto;
 }
-
 .yms-radio input[type=radio] {
-  display: none;
+  display: none; 
 }
-
-.yms-radio input[type=radio]:checked + label {
+.yms-radio input[type="radio"]:checked + label {
   background: #15A82B;
-  color: #FFF;
+  color: #FFF; 
 }
-
 .yms-radio label {
   color: #000;
   border: #dddddd solid 1px;
@@ -519,73 +500,66 @@ body {
   height: 32px;
   line-height: 32px;
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .tag-status4 {
   display: inline;
-  padding: 5px 10px;
+  padding:5px 10px;
   color: #fff;
-  margin-right: 5px;
+  margin-right:5px;
   left: 250px;
-  background-color: #15A82B;
+  background-color:#15A82B;
   border-radius: 10px;
 }
-
 .tag-status2 {
   display: inline;
   padding: 5px;
-  margin-right: 5px;
+  margin-right:5px;
   color: #fff;
   left: 250px;
-  background-color: #F93115;
+  background-color:#F93115;
   border-radius: 10px;
 }
 
 .upload-main {
   text-align: center;
 }
-
 .attachment {
   margin-bottom: 20px;
 }
-
 .attachment label {
   display: inline-block;
   position: relative;
   background: #15A82B;
-  color: #fff;
+  color:#fff;
   padding: 10px 18px;
   border-radius: 4px;
   transition: all 0.3s;
-}
-
-.attachment label:hover {
+ }
+ .attachment label:hover {
   background: #fff;
   border: 1px solid #15A82B;
   color: #15A82B;
   transition: all 0.4s;
-}
-
-.attachment label input {
+ }
+ .attachment label input {
   position: absolute;
-  left: 0;
-  top: 0;
+  left:0;
+  top:0;
   opacity: 0;
   width: 100%;
   height: 100%;
-}
-
-.attachment .filename {
+ }
+ .attachment .filename {
   /* font-weight: 16px; */
-  margin: 0 0 0 10px;
-}
-
-.msg {
+  margin:0 0 0 10px;
+ }
+ .msg {
   display: inline-block;
   padding: 10px;
   border-radius: 15px;
   width: 100%;
   margin-bottom: 20px;
   background-color: #B9E5C0;
-}/*# sourceMappingURL=style.css.map */
+}

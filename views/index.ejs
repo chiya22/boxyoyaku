@@ -87,14 +87,12 @@
         <input type="hidden" name="ymdhms_add" value="<%= yoyakued.ymdhms_add %>" />
       </form>
     <% } %>
-    <div class="room">
-      <div class="before_room">
-        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/left_room.svg" /></a>
-      </div>
-      <input type="button" class="current_room" id="select_room_btn" value="<%= room.name %>" />
-      <div class="before_room">
-        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/right_room.svg" /></a>
-      </div>
+    <div class="rooms">
+      <% rooms.forEach((r) => { %>
+        <div class="room">
+          <a href="/change/<%= date %>_<%= r.id %>"><%= r.name %></a>
+        </div>
+      <% }) %>
     </div>
     <div class="day">
       <div class="before_day">

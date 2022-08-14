@@ -89,28 +89,6 @@ body {
   margin: 0 auto;
 }
 
-
-// 部屋選択メッセージエリア
-.select_room_area {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 100;
-  visibility: hidden;
-}
-.select_room_area_inner {
-  position: relative;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border-radius: 15px;
-  width: 500px;
-  text-align: center;
-  padding: 2rem;
-}
-
 // 時間選択メッセージエリア
 .select_time_area {
   width: 100%;
@@ -293,6 +271,8 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 5px;
+  background-color: #000000;
+  color:#ffffff;
 }
 .current_day {
   display: inline-block;
@@ -309,17 +289,16 @@ body {
   display: inline-block;
 }
 // 部屋
-.room {
+.rooms {
   display: flex;
-  background-color: #000000;
-  color:#ffffff;
   height: 40px;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
 }
-.current_room {
+.room {
   display: inline-block;
+  background-color: #fff;
   width: 140px;
   text-align: center;
   font-size:24px;

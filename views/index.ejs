@@ -33,17 +33,6 @@
       </form>
     </div>
   </div>
-  <!-- 部屋選択画面 -->
-  <div class="select_room_area">
-    <div class="select_room_area_inner">
-      <% rooms.forEach((r) => { %>
-        <div>
-          <a href="/change/<%= date %>_<%= r.id %>"><%= r.name %></a>
-        </div>
-      <% }) %>
-      <input type="button" id="select_room_cancel_btn" value="キャンセル" />
-    </div>
-  </div>
   <!-- 確認メッセージ -->
   <div class="msg_confirm">
     <div class="msgarea_confirm">
@@ -87,10 +76,16 @@
         <input type="hidden" name="ymdhms_add" value="<%= yoyakued.ymdhms_add %>" />
       </form>
     <% } %>
+    <!-- 部屋情報 -->
     <div class="rooms">
       <% rooms.forEach((r) => { %>
-        <div class="room">
-          <a href="/change/<%= date %>_<%= r.id %>"><%= r.name %></a>
+        <% if (r.id === room.id) { %>
+          <div class="room-current">
+            <%= r.name %>
+        <% }else { %>
+          <div class="room">
+            <a href="/change/<%= date %>_<%= r.id %>"><%= r.name %></a>
+        <% } %>
         </div>
       <% }) %>
     </div>
@@ -121,18 +116,6 @@
     <% } %>
   </div>
   <script>
-
-    // 部屋選択サブ画面の表示・非表示切り替え
-    const select_room_btn = document.getElementById("select_room_btn");
-    select_room_btn.addEventListener('click', () => {
-      const select_room_area = document.getElementsByClassName("select_room_area")[0];
-      select_room_area.style.visibility = "visible";
-    });
-    const select_room_cancel_btn = document.getElementById("select_room_cancel_btn");
-    select_room_cancel_btn.addEventListener('click', () => {
-      const select_room_area = document.getElementsByClassName("select_room_area")[0];
-      select_room_area.style.visibility = "hidden";
-    })
 
     // 時間選択サブ画面の表示・非表示切り替え
     const select_time = (time) => {

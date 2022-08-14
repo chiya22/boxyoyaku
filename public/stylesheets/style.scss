@@ -17,18 +17,19 @@ body {
 .form-item-style {
   color: #333;
   height: 30px;
-  padding: 5px 5%;
+  padding: 20px 5%;
   border: 1px solid #ccc;
   border-radius: 27px;
   background-clip: padding-box;
   background-color: #fff;
   font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.8px;
   margin-bottom: 10px;
   text-align: left;
   &:focus {
-    border: 1px solid #F93115;
-    background-color: #f0dad8;
+    border: 1px solid #000;
+    background-color: #bfcad8;
   }
 }
 .form-item-readonly-style {
@@ -40,10 +41,55 @@ body {
   margin-bottom: 10px;
   text-align: left;
 }
+// submitボタン
+.submit-btn {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  width: 120px;
+  margin: 10px 5px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}
+// リンク
+.link-area {
+  margin: 20px 0;
+}
+.link-btn {
+  width: 80px;
+  margin: 10px 5px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  &:hover {
+    border: 1px solid #000;
+  }
+}
+
+// ★ログイン画面
+
+.login-header-img {
+  width: 200px;
+  margin: auto;
+  padding-bottom:20px;
+}
+// フォーム入力エリア
+.login-form-area {
+  text-align: center;
+  margin-top: 20px;
+}
 
 
 
-// ヘッダー
+// ★ヘッダー
 .header {
   height: 50px;
   width:100%;
@@ -82,14 +128,14 @@ body {
   width: 33px;
 }
 
-// メイン部分
+// ★メイン部分
 .main-container {
   width:100%;
   max-width: 365px;
   margin: 0 auto;
 }
 
-// 時間選択メッセージエリア
+// ★★時間選択メッセージエリア
 .select_time_area {
   width: 100%;
   height: 100%;
@@ -110,7 +156,7 @@ body {
   padding: 2rem;
 }
 
-// キャンセル確認エリア
+// ★★キャンセル確認エリア
 .msg_confirm {
   width: 100%;
   height: 100%;
@@ -152,46 +198,7 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-
-// フォーム入力エリア
-.form-area {
-  text-align: center;
-}
-
-// submitボタン
-.submit-btn {
-  border: 1px solid #F93115;
-  background-color: #fff;
-  color: #F93115;
-  display: inline-block;
-  width: 120px;
-  margin: 10px 5px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  text-align: center;
-  &:hover {
-    background-color: #F93115;
-    color: #fff;
-  }
-}
-
-// リンク
-.link-area {
-  margin: 20px 0;
-}
-.link-btn {
-  width: 80px;
-  margin: 10px 5px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  &:hover {
-    border: 1px solid #000;
-  }
-}
-
-// メッセージ領域
+// ★★メッセージ領域
 .flashes {
   display:inline-block;
 }
@@ -210,15 +217,7 @@ body {
   background-color: #e4cad2;
 }
 
-
-// ログイン画面
-.login-header-img {
-  width: 200px;
-  margin: auto;
-  padding-bottom:20px;
-}
-
-// 予約画面
+// ★★予約領域
 // 名前
 .name {
   display: flex;
@@ -240,7 +239,7 @@ body {
   display: flex;
   position: relative;
   font-size: 18px;
-  margin: 20px auto;
+  margin: 20px auto 10px auto;
   font-weight: 600;
   padding:5px;
   &::after {
@@ -262,25 +261,27 @@ body {
   width:20px;
   display: inline-block;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 // 日付
 .day {
   display: flex;
-  height: 40px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   background-color: #000000;
   color:#ffffff;
+  padding:10px;
+  text-align: center;
 }
 .current_day {
   display: inline-block;
-  width: 140px;
+  width: 160px;
   text-align: center;
-  font-size:26px;
+  font-size:24px;
   font-weight: 600;
-  margin: 0 20px;
+  margin: 0 10px 0 30px;
 }
 .before_day {
   display: inline-block;
@@ -288,37 +289,39 @@ body {
 .after_day {
   display: inline-block;
 }
-// 部屋
-.rooms {
-  display: flex;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-.room {
-  display: inline-block;
-  background-color: #fff;
-  width: 140px;
-  text-align: center;
-  font-size:24px;
-  font-weight: 600;
-  margin: 0 20px;
-}
-.before_room {
-  display: inline-block;
-}
-.after_room {
-  display: inline-block;
-}
-
-
 .before_icon,
 .after_icon {
   width: 20px;
 }
 
+// 部屋
+.rooms {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;;
+  justify-content: flex-start;
+  font-size:14px;
+}
+.room-current {
+  display: inline-block;
+  background-color: #000;
+  color:#fff;
+  width: 200px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #000;
+  padding: 10px 5px;
+}
+.room {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #000;
+  padding: 10px 5px;
+}
 
+// 予約一覧情報
 .yoyaku_rows {
   width: 100%;
   display: flex;
@@ -349,416 +352,4 @@ body {
   &:hover {
     opacity: 0.7;
   }
-}
-
-
-
-
-
-
-
-.bgcolor-admin {
-  background-color: #D1F2A0;
-}
-.alert {
-  display: block;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.alert-danger {
-  color:#FF0000;
-  font-size: 0.875rem;
-}
-
-
-.main-header {
-  width: 100%;
-  margin: 0 auto 20px auto;
-  text-align: center;
-  font-size: 25px;
-  font-weight: bold;
-  color: #2A4F27
-}
-
-.row-yyyymm {
-  margin-bottom:20px;
-}
-
-.btn {
-  display: block;
-  background-color: #15A82B;
-  color: #fff;
-  width: 200px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-.btn-end {
-  display: block;
-  background-color: #c0c0c0;
-  color: #000;
-  width: 200px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-.btn-kakutei {
-  display: block;
-  background-color: #fff;
-  border: 1px solid #15A82B;
-  color: #15A82B;
-  width: 200px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-
-.btn:hover,
-.btn-end:hover,
-.btn-kakutei:hover,
-.btn-link:hover,
-.btn-update:hover,
-.btn-delete:hover,
-.btn-admin:hover,
-.btn-admin-kakutei:hover,
-.btn-admin-disabled:hover {
-  transform: scale(1.1);
-}
-.btn-disabled {
-  display: block;
-  background-color: #c0c0c0;
-  color: #000;
-  width: 200px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-}
-.btn-footer {
-  width: 100%;
-  margin: auto;
-  text-align: center;
-}
-.btn-link-big {
-  background-color: #004C00;
-  color: #fff;
-  display: inline-block;
-  width: 150px;
-  margin: 10px 5px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-}
-.btn-update {
-  background-color: #F93115;
-  color: #fff;
-  display: inline-block;
-  width: 80px;
-  margin: 10px 5px;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 12px;
-  transition: .3s;
-}
-.btn-delete {
-  background-color: #799973;
-  color: #fff;
-  display: inline-block;
-  width: 80px;
-  margin: 10px 5px;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 12px;
-  transition: .3s;
-}
-
-.btn-admin {
-  display: inline-block;
-  background-color: #15A82B;
-  color: #fff;
-  width: 300px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-.btn-admin-kakutei {
-  display: inline-block;
-  background-color: #6fb495;
-  color: #fff;
-  width: 300px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-.btn-admin-disabled {
-  display: inline-block;
-  background-color: #a3a29e;
-  color: #fff;
-  width: 300px;
-  margin: 0 auto 10px auto;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: .3s;
-}
-
-.btn-admin-inner,
-.btn-admin-inner-disabled {
-  margin-top: 10px;
-}
-.btn-inner-setteing,
-.btn-inner-kibou,
-.btn-inner-kakutei,
-.btn-inner-download {
-  display: inline-block;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin:0 3px;
-}
-.btn-inner-setteing:hover,
-.btn-inner-kibou:hover,
-.btn-inner-kakutei:hover,
-.btn-inner-download:hover {
-  background: #fff;
-  color:#15A82B;
-}
-
-.admin-title {
-  font-size:14px;
-}
-/* .btn-link:hover {
-  border: 1px solid #000;
-  background-color: #fff;
-  color: #333;
-} */
-.row {
-  display:inline-block;
-  width: 100%;
-  margin: auto;
-  padding: 5px 5px;
-  text-align: center;
-}
-.row-kakutei {
-  display:flex;
-  flex-direction: row;
-  width: 100%;
-  /* border: 1px solid #000; */
-  background-color: #dfe0e2;
-  border-radius: 15px;
-  padding: 10px 0 5px 0;
-  margin-bottom: 15px;
-}
-
-.img-icon-haya {
-  width: 20px;
-  margin-right: 10px;
-}
-.img-icon-oso {
-  width: 18px;
-  margin-left: 3px;
-  margin-right: 10px;
-}
-.row-left {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 40%;
-  text-align: center;
-  padding:10px;
-}
-.row-left-top {
-  font-size:16px;
-  font-weight: bold;
-}
-.row-left-under {
-  padding-top:5px;
-  font-size:14px;
-}
-.row-right {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 60%;
-}
-.row-right-top,
-.row-right-under {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-}
-.row-right-top-left,
-.row-right-under-left {
-  display: inline-block;
-}
-.row-right-top-right,
-.row-right-under-right {
-  display: inline-block;
-  height: 20px;
-  padding:5px;
-}
-.row-active {
-  font-weight: bold;
-  background: linear-gradient(transparent 0, yellow 0);
-  padding:2px 5px;
-}
-.row-nonactive {
-  padding:2px 5px;
-}
-
-.row-header {
-  position: relative;
-  text-align: center;
-  padding: 10px;
-  /* margin-right: 5px; */
-}
-.row-header-color-holiday {
-  color: #F93115;
-}
-.row-header-color-saturday {
-  color: #0000FF;
-}
-.row-header-color {
-  color:#333;
-}
-
-.row-radio {
-  position: relative;
-  flex: 1;
-  border: 1px solid #b6b6b6;
-  margin:auto 5px;
-  width: 100%;
-}
-.inline-radio {
-  display: flex;
-  border-radius: 3px;
-  overflow:hidden;
-}
-.row-radio-input {
-  width: 100%;
-  height: 30px;
-  opacity: 0;
-}
-.row-radio-label {
-  position: absolute;
-  top: 0; left: 0;
-  color: #b6b6b6;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  font-size:10px;
-}
-.row-radio-input:checked + label {
-  background: #15A82B;
-  font-weight: 500;
-  color: #fff;
-}
-
-.form-memo-style {
-  color: #333;
-  resize:none;
-  width:90%;
-  height: 100px;
-  padding: 10px 5%;
-  border: 1px solid #ccc;
-  border-radius: 27px;
-  background-clip: padding-box;
-  background-color: #fff;
-  font-size: 12px;
-  letter-spacing: 0.8px;
-  margin: 10px auto 10px auto;
-  text-align: left;
-}
-
-.yms-radio {
-  margin: 10px auto 20px auto;
-}
-.yms-radio input[type=radio] {
-  display: none; 
-}
-.yms-radio input[type="radio"]:checked + label {
-  background: #15A82B;
-  color: #FFF; 
-}
-.yms-radio label {
-  color: #000;
-  border: #dddddd solid 1px;
-  font-size: 12px;
-  height: 32px;
-  line-height: 32px;
-  padding: 10px;
-  cursor: pointer; 
-}
-
-.tag-status4 {
-  display: inline;
-  padding:5px 10px;
-  color: #fff;
-  margin-right:5px;
-  left: 250px;
-  background-color:#15A82B;
-  border-radius: 10px;
-}
-.tag-status2 {
-  display: inline;
-  padding: 5px;
-  margin-right:5px;
-  color: #fff;
-  left: 250px;
-  background-color:#F93115;
-  border-radius: 10px;
-}
-
-.upload-main {
-  text-align: center;
-}
-.attachment {
-  margin-bottom: 20px;
-}
-.attachment label {
-  display: inline-block;
-  position: relative;
-  background: #15A82B;
-  color:#fff;
-  padding: 10px 18px;
-  border-radius: 4px;
-  transition: all 0.3s;
- }
- .attachment label:hover {
-  background: #fff;
-  border: 1px solid #15A82B;
-  color: #15A82B;
-  transition: all 0.4s;
- }
- .attachment label input {
-  position: absolute;
-  left:0;
-  top:0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
- }
- .attachment .filename {
-  /* font-weight: 16px; */
-  margin:0 0 0 10px;
- }
- .msg {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 15px;
-  width: 100%;
-  margin-bottom: 20px;
-  background-color: #B9E5C0;
 }

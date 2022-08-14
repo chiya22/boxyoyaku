@@ -12,14 +12,16 @@ const findPKey = async (id,ymdhms_add) => {
 };
 
 /**
- * idにおいて有効な予約情報を取得する
+ * idにおいて有効な予約情報を取得する（部屋名つき）
  * @param {*} id 予約情報を取得するユーザー
  * @returns 予約情報（1件)
  */
 const findYoyakuByUser = async (id) => {
     try {
-        const retObj = await knex.from("yoyakus").where({id_user: id}).andWhere({ymdhms_del: "99991231235959"});
-        return retObj[0];
+        const query = "SELECT a.*, r.name AS name_room FROM (SELECT * FROM yoyakus a WHERE a.id_user = '" + id + "' AND a.ymdhms_del = '99991231235959') a LEFT OUTER JOIN rooms r ON a.id_room = r.id"
+        logger.info(query);
+        const retObj = await knex.raw(query);
+        return retObj.rows[0];
     } catch(err) {
         throw err;
     }

@@ -12,12 +12,8 @@ body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
-.main-container {
-  width:100%;
-  max-width: 375px;
-  margin:50px auto;
-}
 
+// 共通部分
 .form-item-style {
   color: #333;
   height: 30px;
@@ -45,6 +41,55 @@ body {
   text-align: left;
 }
 
+
+
+// ヘッダー
+.header {
+  height: 50px;
+  width:100%;
+  max-width: 365px;
+  margin: 30px auto 0 auto;
+}
+.header-main {
+  width:100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.heeder-left {
+  width:70%;
+  padding: 0 10px;
+}
+.header-img {
+  width:250px;
+}
+.header-right {
+  display: flex;
+  width:30%;
+  padding: 0 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header-menu {
+  display: inline-block;
+  padding: 0 0 0 15px;
+}
+.header-icon-img {
+  width: 30px;
+}
+.header-logout-icon-img {
+  padding-top:3px;
+  width: 33px;
+}
+
+// メイン部分
+.main-container {
+  width:100%;
+  max-width: 365px;
+  margin: 0 auto;
+}
+
+
 // 部屋選択メッセージエリア
 .select_room_area {
   width: 100%;
@@ -65,6 +110,7 @@ body {
   text-align: center;
   padding: 2rem;
 }
+
 // 時間選択メッセージエリア
 .select_time_area {
   width: 100%;
@@ -86,6 +132,49 @@ body {
   padding: 2rem;
 }
 
+// キャンセル確認エリア
+.msg_confirm {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  visibility: hidden;
+}
+.msgarea_confirm {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:#fff;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  font-weight: 600;
+  padding: 2rem;
+}
+.msgarea_text_confirm {
+  margin-bottom: 20px;
+}
+.msgarea_okbtn,
+.msgarea_ngbtn {
+  font-size: 16px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 15px;
+  margin: 0 15px;
+}
+.msgarea_okbtn:hover,
+.msgarea_ngbtn:hover {
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+
 // フォーム入力エリア
 .form-area {
   text-align: center;
@@ -97,11 +186,12 @@ body {
   background-color: #fff;
   color: #F93115;
   display: inline-block;
-  width: 80px;
+  width: 120px;
   margin: 10px 5px;
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
+  text-align: center;
   &:hover {
     background-color: #F93115;
     color: #fff;
@@ -150,7 +240,137 @@ body {
   padding-bottom:20px;
 }
 
+// 予約画面
+// 名前
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.name_person {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+}
+.name_company {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+// 予約済情報
+.yoyakued {
+  width: 100%;
+  display: flex;
+  position: relative;
+  font-size: 18px;
+  margin: 20px auto;
+  font-weight: 600;
+  padding:5px;
+  &::after {
+    position: absolute;
+    font-weight: 600;
+    content: '予約済';
+    background: #F93115;
+    color: #fff;
+    left: 0px;
+    bottom: 100%;
+    border-radius: 5px;
+    padding: 3px 7px 3px;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.05em
+  }
+}
+.cancel-btn-icon {
+  width:20px;
+  display: inline-block;
+  margin-left: 10px;
+}
 
+// 日付
+.day {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.current_day {
+  display: inline-block;
+  width: 140px;
+  text-align: center;
+  font-size:26px;
+  font-weight: 600;
+  margin: 0 20px;
+}
+.before_day {
+  display: inline-block;
+}
+.after_day {
+  display: inline-block;
+}
+// 部屋
+.room {
+  display: flex;
+  background-color: #000000;
+  color:#ffffff;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.current_room {
+  display: inline-block;
+  width: 140px;
+  text-align: center;
+  font-size:24px;
+  font-weight: 600;
+  margin: 0 20px;
+}
+.before_room {
+  display: inline-block;
+}
+.after_room {
+  display: inline-block;
+}
+
+
+.before_icon,
+.after_icon {
+  width: 20px;
+}
+
+
+.yoyaku_rows {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size:1rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+.yoyaku_time_row {
+  display: inline-block;
+  background-color: #000000;
+  padding: 10px;
+  flex-basis: 20%;
+  text-align: center;
+  color:#ffffff;
+}
+.yoyaku_yoyakued_row {
+  display: inline-block;
+  background-color: #bfcad8;
+  padding: 10px;
+  flex-basis: 80%;
+}
+.yoyaku_yoyaku_row {
+  display: inline-block;
+  background-color: #bfcad8;
+  padding: 10px;
+  flex-basis: 80%;
+  &:hover {
+    opacity: 0.7;
+  }
+}
 
 
 

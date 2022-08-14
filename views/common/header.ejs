@@ -1,14 +1,14 @@
 <div class="header">
-    <div class="header__main">
-        <div class="header_left">
-            <a href="/">
-                <img class="login-header-img" src="/static/images/building_logo.svg">
+    <div class="header-main">
+        <a class="header-left" href="/">
+            <img class="header-img" src="/static/images/building_logo.svg">
+        </a>
+        <div class="header-right">
+            <a class="header-menu header-profile" href="/users/updinfo">
+                <img class="header-icon-img" src="/static/images/profile.svg">
             </a>
-        </div>
-        <div class="header__right">
-            <a href="/users/upd">ユーザー情報編集</a>
-            <form method="post" action="/logout">
-                <input type="submit" class="btn-link" value="ログアウト" />
+            <form class="header-menu header-logout" method="post" action="/logout">
+                <input type="image" class="header-logout-icon-img" src="/static/images/logout.svg" />
             </form>
         </div>
     </div>

@@ -207,7 +207,7 @@ const gettimelist = (objYoyakus) => {
   let index = '';
 
   // 30分単位の時間オブジェクトを作成（初期化）
-  for (let i=0; i<24; i++) {
+  for (let i=6; i<24; i++) {
     index = ("0" + String(i) + "00").slice(-4);
     times[index] = "";
     index = ("0" + String(i) + "30").slice(-4);

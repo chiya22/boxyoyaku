@@ -44,6 +44,17 @@
       <input type="button" id="select_room_cancel_btn" value="キャンセル" />
     </div>
   </div>
+  <!-- 確認メッセージ -->
+  <div class="msg_confirm">
+    <div class="msgarea_confirm">
+      <div class="msgarea_text_confirm">
+        <p>予約をキャンセルします。</p>
+        <p>よろしいですか？</p>
+      </div>
+        <button class="msgarea_okbtn">はい</button>
+        <button class="msgarea_ngbtn">いいえ</button>
+    </div>
+  </div>
   <!-- メイン画面 -->
   <div class="main-container">
     <% if (flashMessages) { %>
@@ -57,43 +68,55 @@
         </div>
       <% } %>
     <% } %>
-    <h1 class="main-header"><%= user.name %></h1>
-    <hr>
-    <div><input type="text" class="flatpickr2" id="select_date_btn" name="ymd_target" value="<%= date.slice(0,4) %>/<%= date.slice(4,6) %>/<%= date.slice(-2) %>"></div>
-    <a href="/change/<%= datebefore %>_<%= room.id %>">前の日付</a>
-    <a href="/change/<%= dateafter %>_<%= room.id %>">次の日付</a>
-    <hr>
-    <div><input type="button" id="select_room_btn" value="<%= room.name %>" /></div>
-    <input type="hidden" id="select_id_room" value="<%= room.id %>" />
+    <!-- メイン　-->
+    <div class="name">
+      <h1 class="name_person"><%= user.name %></h1>
+      <div class="name_company"><%= user.name_company %></div>
+    </div>
     <!-- 予約済情報-->
-    <hr>
     <% if (yoyakued) { %>
       <form name="cancel_yoyaku" method="POST" action="/cancelyoyaku">
-        <div>
-          <%= yoyakued.id_user %></br>
-          <%= yoyakued.ymd_yoyaku %></br>
-          <%= yoyakued.id_room %></br>
-          <%= yoyakued.time_start %></br>
-          <%= yoyakued.time_end %></br>
-          <%= yoyakued.ymdhms_add %></br>
-          <%= yoyakued.ymdhms_del %></br>
+        <div class="yoyakued">
+          <a href="/change/<%= yoyakued.ymd_yoyaku %>_<%= yoyakued.id_room %>">
+            <%= yoyakued.ymd_yoyaku.slice(0,4) %>/<%= yoyakued.ymd_yoyaku.slice(4,6) %>/<%= yoyakued.ymd_yoyaku.slice(-2) %>  
+            <%= yoyakued.name_room %>
+            <%= yoyakued.time_start.slice(0,2) %>:<%= yoyakued.time_start.slice(-2) %>～<%= yoyakued.time_end.slice(0,2) %>:<%= yoyakued.time_end.slice(-2) %>
+          </a>
+          <img class="cancel-btn-icon" id="btnCancel" src="/static/images/cancel.svg" />
         </div>
         <input type="hidden" name="ymdhms_add" value="<%= yoyakued.ymdhms_add %>" />
-        <input type="submit" value="キャンセル" />
       </form>
     <% } %>
+    <div class="room">
+      <div class="before_room">
+        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/left_room.svg" /></a>
+      </div>
+      <input type="button" class="current_room" id="select_room_btn" value="<%= room.name %>" />
+      <div class="before_room">
+        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/right_room.svg" /></a>
+      </div>
+    </div>
+    <div class="day">
+      <div class="before_day">
+        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/left.svg" /></a>
+      </div>
+      <input type="text" class="current_day flatpickr2" id="select_date_btn" name="ymd_target" value="<%= date.slice(0,4) %>/<%= date.slice(4,6) %>/<%= date.slice(-2) %>">
+      <div class="after_day">
+        <a href="/change/<%= dateafter %>_<%= room.id %>"><img class="after_icon" src="/static/images/right.svg" /></a>
+      </div>
+    </div>
+    <input type="hidden" id="select_id_room" value="<%= room.id %>" />
     <!-- 予約情報　-->
-    <hr>
     <% if (yoyakus) { %>
     <%  const keys = Object.keys(yoyakus).sort() %>
     <%  for (key of keys) { %>
-        <div id="<%= key %>">
-          <div><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
+        <div class="yoyaku_rows" id="<%= key %>">
+          <div class="yoyaku_time_row"><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
           <% if (yoyakus[key]) { %>
-            <div><%= yoyakus[key].name %></div>
+            <div class="yoyaku_yoyakued_row"><%= yoyakus[key].name %></div>
           <% } else { %>
             <% let nm_func = "select_time(\"" + key + "\")" %>
-            <div><input type="button" name="select_time_btn" value="予約する" onclick=<%= nm_func %> /></div>
+            <input class="yoyaku_yoyaku_row" type="button" name="select_time_btn" value="" onclick=<%= nm_func %> />
           <% } %>
         </div>
     <%  } %>
@@ -156,6 +179,29 @@
       const id_room = document.getElementById("select_id_room");
       window.location = "/change/" + select_date_btn.value.replace(/\//g,"") + "_" + id_room.value;
     })
+
+    // キャンセルボタンの確認メッセージエリアの表示
+    let btnCancel = document.getElementById("btnCancel");
+    if (btnCancel) {
+      btnCancel.addEventListener("click", (e) => {
+        scrollTo(0, 0);
+        let msg = document.getElementsByClassName("msg_confirm")[0];
+        msg.style.visibility = "visible";
+      });
+    }
+    // 確認ダイアログで「OK」を押した場合
+    let okbtn = document.getElementsByClassName("msgarea_okbtn")[0];
+    okbtn.addEventListener('click', () => {
+        let msg_confirm = document.getElementsByClassName("msg_confirm")[0];
+        msg_confirm.style.visibility = "hidden";
+        document.cancel_yoyaku.submit();
+    });
+    // 確認ダイアログで「NG」を押した場合
+    let ngbtn = document.getElementsByClassName("msgarea_ngbtn")[0];
+    ngbtn.addEventListener('click', () => {
+        let msg = document.getElementsByClassName("msg_confirm")[0];
+        msg.style.visibility = "hidden";
+    });
     
     /**
      * HHMM形式を変換して分で返却する

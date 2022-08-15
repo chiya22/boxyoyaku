@@ -101,13 +101,15 @@ body {
   background-color: #FFE6D8;
 }
 
-.login_header_img {
+.login_header_img,
+.request_header_img {
   width: 200px;
   margin: auto;
   padding-bottom: 20px;
 }
 
-.login_header {
+.login_header,
+.request_header {
   text-align: center;
   margin-top: 50px;
 }
@@ -168,17 +170,17 @@ body {
   width: 33px;
 }
 
+.main_container {
+  width: 100%;
+  max-width: 365px;
+  margin: 0 auto;
+}
+
 .section_header {
   position: -webkit-sticky;
   position: sticky;
   top: 86px;
   background-color: #fff;
-}
-
-.main_container {
-  width: 100%;
-  max-width: 365px;
-  margin: 0 auto;
 }
 
 .select_time_area {
@@ -448,4 +450,18 @@ body {
 }
 .yoyaku_yoyaku_row:hover {
   opacity: 0.7;
+}
+
+.request_inner {
+  text-align: center;
+}
+
+.request_msg {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.err_inner {
+  margin-top: 50px;
 }/*# sourceMappingURL=style.css.map */

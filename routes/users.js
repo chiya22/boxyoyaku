@@ -108,11 +108,11 @@ router.post('/request', (req, res, next) => {
 
     // 対象メールアドレスがすでに登録されていないか確認
     const email = req.body.email;
-    const retObj = await users.findPKey(email);
+    const retObj = await users.findByEmail(email);
 
     // すでに登録されている場合
     if (retObj) {
-      req.flash("error", `メールアドレス【${id}】はすでに登録されています。`);
+      req.flash("error", `メールアドレス【${email}】はすでに登録されています。`);
       res.redirect("/users/request");
 
     } else {
@@ -218,10 +218,10 @@ router.post('/add', (req, res, next) => {
   } else {
     (async () => {
 
-      const retUserObj = await users.findPKey(req.body.id);
+      const retUserObj = await users.findPKey(req.body.email);
 
       if (retUserObj) {
-        req.flash("error", `ID【${req.body.id}】はすでに登録されています。別のIDを入力してください。`);
+        req.flash("error", `メールアドレス【${req.body.email}】はすでに登録されています。別のメールアドレスを入力してください。`);
         res.redirect(`/users/request/${req.body.key}`);
       } else {
         let inObjUser = {};
@@ -241,7 +241,7 @@ router.post('/add', (req, res, next) => {
         } catch (err) {
           // if (err.errno === 1062) {
           if (err.code === '23505') {
-            req.flash("error", `ID【${inObjUser.id}】はすでに登録されています。`);
+            req.flash("error", `メールアドレス【${inObjUser.email}】はすでに登録されています。`);
             res.redirect(`/users/request/${req.body.key}`);
           } else {
             throw err;

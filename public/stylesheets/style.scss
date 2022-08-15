@@ -108,13 +108,15 @@ body {
 
 
 // ★ログイン画面
-.login_header_img {
+.login_header_img,
+.request_header_img {
   width: 200px;
   margin: auto;
   padding-bottom:20px;
 }
 // フォーム入力エリア
-.login_header {
+.login_header,
+.request_header {
   text-align: center;
   margin-top: 50px;
 }
@@ -169,17 +171,17 @@ body {
   width: 33px;
 }
 
-.section_header {
-  position: sticky;
-  top: 86px;
-  background-color: #fff;
-}
-
 // ★メイン部分
 .main_container {
   width:100%;
   max-width: 365px;
   margin: 0 auto;
+}
+// 上に固定する部分
+.section_header {
+  position: sticky;
+  top: 86px;
+  background-color: #fff;
 }
 
 // ★★時間選択メッセージエリア
@@ -431,4 +433,21 @@ body {
   &:hover {
     opacity: 0.7;
   }
+}
+
+
+// ★リクエスト画面
+.request_inner {
+  text-align: center;
+}
+.request_msg {
+  font-size:16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+// ★エラー画面
+.err_inner {
+  margin-top: 50px;
 }

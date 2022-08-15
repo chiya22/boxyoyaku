@@ -4,12 +4,14 @@
             <img class="header_img" src="/static/images/building_logo.svg">
         </a>
         <div class="header_right">
+            <% if (locals.user) { %>
             <a class="header_menu header_profile" href="/users/updinfo">
                 <img class="header_icon_img" src="/static/images/profile.svg">
             </a>
             <form class="header_menu header_logout" method="post" action="/logout">
                 <input type="image" class="header_logout_icon_img" src="/static/images/logout.svg" />
             </form>
+            <% } %>
         </div>
     </div>
 </div>

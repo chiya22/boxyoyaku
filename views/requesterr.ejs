@@ -10,19 +10,23 @@
 </head>
 
 <body>
-  <div class="main-container">
-    <% if (flashMessages) { %>
-      <% if (flashMessages.success) { %>
-        <div class="flashes alert">
-          <div class="flash success"><%= flashMessages.success %></div>
-        </div>
-      <% } else if (flashMessages.error) { %>
-        <div class="flashes alert">
-          <div class="flash error alert-danger"><%= flashMessages.error %></div>
-        </div>
-      <% } %>
-    <% } %>
-    <h1 class="main-header">リクエストエラー</h1>
+  <div class="main_container">
+    <div class="request_header">
+      <img class="request_header_img" src="/static/images/building_logo.svg">
+    </div>
+    <div class="err_innser">
+        <% if (flashMessages) { %>
+          <% if (flashMessages.success) { %>
+            <div class="flashes alert">
+              <div class="flash success"><%= flashMessages.success %></div>
+            </div>
+          <% } else if (flashMessages.error) { %>
+            <div class="flashes alert">
+              <div class="flash error alert-danger"><%= flashMessages.error %></div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
   </div>
 </body>
 </html>

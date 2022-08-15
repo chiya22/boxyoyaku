@@ -12,9 +12,11 @@
 <body>
   <div class="main_container">
     <div class="login_header">
-      <img class="login_header_img" src="/static/images/building_logo.svg">
+      <a href="/">
+        <img class="login_header_img" src="/static/images/building_logo.svg">
+      </a>
     </div>
-<% if (flashMessages) { %>
+    <% if (flashMessages) { %>
       <% if (flashMessages.success) { %>
         <div class="flashes alert">
           <div class="flash success"><%= flashMessages.success %></div>

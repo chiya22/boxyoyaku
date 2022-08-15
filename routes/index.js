@@ -127,15 +127,15 @@ router.post("/addyoyaku", security.authorize(), (req, res, next) => {
     const timeinterval = tool.getMByHhmm(req.body.select_time_end) - tool.getMByHhmm(req.body.select_time_start);
     // 予約は1人1回まで
     if (retObjYoyakuzumi) {
-      req.flash("error", "すでに1件予約されています。\r\nすでに登録している予約をキャンセルした後、再度予約を行ってください。");
+      req.flash("error", "すでに1件予約されています。すでに登録している予約をキャンセルした後、再度予約を行ってください。");
       res.redirect("/");
     // 他のユーザーが同じ日付、部屋、時間帯で登録している場合
     } else if (retObjYoyakucheck.rowCount !== 0) {
-      req.flash("error", "すでに他のユーザーが予約しているため予約できません。\r\n予約条件を見直し、再度予約を行ってください。");
+      req.flash("error", "すでに他のユーザーが予約しているため予約できません。予約条件を見直し、再度予約を行ってください。");
       res.redirect("/");
     // 1回の予約は3時間まで
     } else if (timeinterval > 180) {
-      req.flash("error", "1回の予約は3時間までとなります。\r\n予約条件を見直し、再度予約を行ってください。");
+      req.flash("error", "1回の予約は3時間までとなります。予約条件を見直し、再度予約を行ってください。");
       res.redirect("/");
     } else {
       // 予約登録

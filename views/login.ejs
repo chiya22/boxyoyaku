@@ -10,8 +10,11 @@
 </head>
 
 <body>
-  <div class="main-container">
-    <% if (flashMessages) { %>
+  <div class="main_container">
+    <div class="login_header">
+      <img class="login_header_img" src="/static/images/building_logo.svg">
+    </div>
+<% if (flashMessages) { %>
       <% if (flashMessages.success) { %>
         <div class="flashes alert">
           <div class="flash success"><%= flashMessages.success %></div>
@@ -23,24 +26,19 @@
       <% } %>
     <% } %>
     <form action="/login" method="post">
-      <div class="login-form-area">
-        <div class="login-header-img">
-          <img src="/static/images/building_logo.svg">
+      <div class="login_form_area">
+        <div>
+          <input class="form_item_style" type="text" name="username" placeholder="ID" autofocus />
         </div>
         <div>
-          <input class="form-item-style" type="text" name="username" placeholder="ID" autofocus />
+          <input class="form_item_style" type="password" name="password" placeholder="パスワード" />
         </div>
         <div>
-          <input class="form-item-style" type="password" name="password" placeholder="パスワード" />
+          <input class="submit_btn" type="submit" value="ログイン" />
         </div>
-        <div>
-          <input class="submit-btn" type="submit" value="ログイン" />
-        </div>
-        <div class="link-area">
-          <a class="link-btn" href="/users/request">新規登録</a>
-        </div>
-        <div class="link-area">
-          <a class="link-btn" href="/users/requestpwd">パスワード忘れ</a>
+        <div class="link_area">
+          <a class="link_btn" href="/users/request">新規登録</a>
+          <a class="link_btn" href="/users/requestpwd">パスワード忘れ</a>
         </div>
       </div>
     </form>

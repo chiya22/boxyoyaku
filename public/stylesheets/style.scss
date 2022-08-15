@@ -14,7 +14,7 @@ body {
 
 
 // 共通部分
-.form-item-style {
+.form_item_style {
   color: #333;
   height: 30px;
   padding: 20px 5%;
@@ -32,7 +32,7 @@ body {
     background-color: #bfcad8;
   }
 }
-.form-item-readonly-style {
+.form_item_readonly_style {
   color: #8a8a8a;
   height: 30px;
   padding: 5px 5%;
@@ -42,7 +42,7 @@ body {
   text-align: left;
 }
 // submitボタン
-.submit-btn {
+.submit_btn {
   border: 1px solid #000;
   background-color: #000;
   color: #fff;
@@ -57,79 +57,126 @@ body {
   &:hover {
     background-color: #fff;
     color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
 }
 // リンク
-.link-area {
-  margin: 20px 0;
+.link_area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.link-btn {
-  width: 80px;
+.link_btn {
+  width: 120px;
   margin: 10px 5px;
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #000;
   &:hover {
-    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
 }
 
-// ★ログイン画面
+// フラッシュメッセージ領域
+.flashes {
+  display:inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.flash {
+  font-size:14px;
+  padding: 10px 30px;
+  border-radius: 15px;
+  line-height: 1.2rem;
+}
+.success {
+  color:#000;
+  font-weight: 600;
+  background-color: #bfcad8;
+}
+.error {
+  color:#F93115;
+  font-weight: 600;
+  background-color: #FFE6D8;
+}
 
-.login-header-img {
+
+// ★ログイン画面
+.login_header_img {
   width: 200px;
   margin: auto;
   padding-bottom:20px;
 }
 // フォーム入力エリア
-.login-form-area {
+.login_header {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
-
-
+.login_form_area {
+  text-align: center;
+}
 
 // ★ヘッダー
 .header {
-  height: 50px;
+  // height: 50px;
   width:100%;
   max-width: 365px;
-  margin: 30px auto 0 auto;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  // margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index:2;
 }
-.header-main {
+.header_main {
   width:100%;
   display: flex;
   text-align: center;
   align-items: center;
+  background-color: #fff;
 }
-.heeder-left {
+.heeder_left {
   width:70%;
   padding: 0 10px;
 }
-.header-img {
+.header_img {
   width:250px;
 }
-.header-right {
+.header_right {
   display: flex;
   width:30%;
   padding: 0 10px;
   justify-content: flex-end;
   align-items: center;
 }
-.header-menu {
+.header_menu {
   display: inline-block;
   padding: 0 0 0 15px;
 }
-.header-icon-img {
+.header_icon_img {
   width: 30px;
 }
-.header-logout-icon-img {
+.header_logout_icon_img {
   padding-top:3px;
   width: 33px;
 }
 
+.section_header {
+  position: sticky;
+  top: 86px;
+  background-color: #fff;
+}
+
 // ★メイン部分
-.main-container {
+.main_container {
   width:100%;
   max-width: 365px;
   margin: 0 auto;
@@ -146,14 +193,65 @@ body {
 }
 .select_time_area_inner {
   position: relative;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 15px;
-  width: 500px;
+  width: 360px;
   text-align: center;
   padding: 2rem;
+}
+.select_time_msg {
+  display: inline-block;
+  width: 100%;
+  color:#000;
+  font-weight: 600;
+  background-color: #bfcad8;
+  border-radius: 15px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.select_time_header {
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.select_time_start {
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.select_time_start_label {
+  display: inline-block;
+  width: 60px;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 2px;
+}
+.select_time_ends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.select_time_radio_input {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.select_time_radio_label {
+  display: inline-block;
+  transition: all .2s;
+  width: 140px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+.select_time_radio_input:checked + .select_time_radio_label {
+  background: #f93115;
+  color: #fff;
 }
 
 // ★★キャンセル確認エリア
@@ -198,25 +296,6 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-// ★★メッセージ領域
-.flashes {
-  display:inline-block;
-}
-.flash {
-  font-size:14px;
-  padding: 10px 30px;
-  border-radius: 15px;
-  line-height: 1.2rem;
-}
-.success {
-  color:#257375;
-  background-color: #a9d4d9;
-}
-.error {
-  color:#631c32;
-  background-color: #e4cad2;
-}
-
 // ★★予約領域
 // 名前
 .name {
@@ -257,7 +336,7 @@ body {
     letter-spacing: 0.05em
   }
 }
-.cancel-btn-icon {
+.cancel_btn_icon {
   width:20px;
   display: inline-block;
   margin-left: 10px;
@@ -281,7 +360,7 @@ body {
   text-align: center;
   font-size:24px;
   font-weight: 600;
-  margin: 0 10px 0 30px;
+  margin: 0 10px 0 15px;
 }
 .before_day {
   display: inline-block;
@@ -302,7 +381,7 @@ body {
   justify-content: flex-start;
   font-size:14px;
 }
-.room-current {
+.room_current {
   display: inline-block;
   background-color: #000;
   color:#fff;

@@ -8,31 +8,7 @@
     <%- include("./common/stylesheets.ejs") %>
   </head>
 </head>
-
 <body>
-  <!-- ヘッダー -->
-  <%- include("./common/header.ejs") %>
-  <!-- 時間選択画面 -->
-  <div class="select_time_area">
-    <div class="select_time_area_inner">
-      <form name="addyoyaku" method="post" action="/addyoyaku">
-        日付：<%= date %>
-        部屋番号：<%= room.name %>
-        開始時刻：<input type="text" id="select_time_start" name="select_time_start" readonly value="" />
-        終了時刻：
-        <input id="select_time_end_1" type="radio" value="" checked="checked" name="select_time_end"><label id="select_time_end_label_1" for="select_time_end_1"></label>
-        <input id="select_time_end_2" type="radio" value="" name="select_time_end"><label id="select_time_end_label_2" for="select_time_end_2"></label>
-        <input id="select_time_end_3" type="radio" value="" name="select_time_end"><label id="select_time_end_label_3" for="select_time_end_3"></label>
-        <input id="select_time_end_4" type="radio" value="" name="select_time_end"><label id="select_time_end_label_4" for="select_time_end_4"></label>
-        <input id="select_time_end_5" type="radio" value="" name="select_time_end"><label id="select_time_end_label_5" for="select_time_end_5"></label>
-        <input id="select_time_end_6" type="radio" value="" name="select_time_end"><label id="select_time_end_label_6" for="select_time_end_6"></label>
-        <input type="submit" value="予約する" />
-        <input type="button" id="select_time_cancel_btn" value="キャンセル" />
-        <input type="hidden" name="select_id_room" value="<%= room.id %>" />
-        <input type="hidden" name="select_ymd_yoyaku" value="<%= date %>" />
-      </form>
-    </div>
-  </div>
   <!-- 確認メッセージ -->
   <div class="msg_confirm">
     <div class="msgarea_confirm">
@@ -44,8 +20,33 @@
         <button class="msgarea_ngbtn">いいえ</button>
     </div>
   </div>
+  <!-- 時間選択画面 -->
+  <div class="select_time_area">
+    <div class="select_time_area_inner">
+      <form name="addyoyaku" method="post" action="/addyoyaku">
+        <p class="select_time_msg">終了時刻を選択してください。</p>
+        <div class="select_time_header"><%= date.slice(0,4) + "/" + date.slice(4,6) + "/" + date.slice(-2) %> <%= room.name %></div>
+        <div class="select_time_start">開始時刻：</div><p class="select_time_start_label"></p>
+        <div class="select_time_ends">
+          <input class="select_time_radio_input" id="select_time_end_1" type="radio" value="" checked="checked" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_1" for="select_time_end_1"></label>
+          <input class="select_time_radio_input" id="select_time_end_2" type="radio" value="" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_2" for="select_time_end_2"></label>
+          <input class="select_time_radio_input" id="select_time_end_3" type="radio" value="" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_3" for="select_time_end_3"></label>
+          <input class="select_time_radio_input" id="select_time_end_4" type="radio" value="" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_4" for="select_time_end_4"></label>
+          <input class="select_time_radio_input" id="select_time_end_5" type="radio" value="" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_5" for="select_time_end_5"></label>
+          <input class="select_time_radio_input" id="select_time_end_6" type="radio" value="" name="select_time_end"><label class="select_time_radio_label" id="select_time_end_label_6" for="select_time_end_6"></label>
+        </div>
+        <input class="submit_btn" type="submit" value="予約する" />
+        <input class="link_btn" type="button" id="select_time_cancel_btn" value="キャンセル" />
+        <input type="hidden" name="select_id_room" value="<%= room.id %>" />
+        <input type="hidden" name="select_ymd_yoyaku" value="<%= date %>" />
+        <input type="hidden" id="select_time_start" name="select_time_start" value="" />
+      </form>
+    </div>
+  </div>
+  <!-- ヘッダー -->
+  <%- include("./common/header.ejs") %>
   <!-- メイン画面 -->
-  <div class="main-container">
+  <div class="main_container">
     <% if (flashMessages) { %>
       <% if (flashMessages.success) { %>
         <div class="flashes alert">
@@ -58,47 +59,50 @@
       <% } %>
     <% } %>
     <!-- メイン　-->
-    <div class="name">
-      <h1 class="name_person"><%= user.name %></h1>
-      <div class="name_company"><%= user.name_company %></div>
-    </div>
-    <!-- 予約済情報-->
-    <% if (yoyakued) { %>
-      <form name="cancel_yoyaku" method="POST" action="/cancelyoyaku">
-        <div class="yoyakued">
-          <a href="/change/<%= yoyakued.ymd_yoyaku %>_<%= yoyakued.id_room %>">
-            <%= yoyakued.ymd_yoyaku.slice(0,4) %>/<%= yoyakued.ymd_yoyaku.slice(4,6) %>/<%= yoyakued.ymd_yoyaku.slice(-2) %>  
-            <%= yoyakued.name_room %>
-            <%= yoyakued.time_start.slice(0,2) %>:<%= yoyakued.time_start.slice(-2) %>～<%= yoyakued.time_end.slice(0,2) %>:<%= yoyakued.time_end.slice(-2) %>
-          </a>
-          <img class="cancel-btn-icon" id="btnCancel" src="/static/images/cancel.svg" />
-        </div>
-        <input type="hidden" name="ymdhms_add" value="<%= yoyakued.ymdhms_add %>" />
-      </form>
-    <% } %>
-    <!-- 部屋情報 -->
-    <div class="rooms">
-      <% rooms.forEach((r) => { %>
-        <% if (r.id === room.id) { %>
-          <div class="room-current">
-            <%= r.name %>
-        <% }else { %>
-          <div class="room">
-            <a href="/change/<%= date %>_<%= r.id %>"><%= r.name %></a>
-        <% } %>
-        </div>
-      <% }) %>
-    </div>
-    <div class="day">
-      <div class="before_day">
-        <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/left.svg" /></a>
+    <section class="section_header">
+      <div class="name">
+        <h1 class="name_person"><%= user.name %></h1>
+        <div class="name_company"><%= user.name_company %></div>
       </div>
-      <input type="text" class="current_day flatpickr2" id="select_date_btn" name="ymd_target" value="<%= date.slice(0,4) %>/<%= date.slice(4,6) %>/<%= date.slice(-2) %>">
-      <div class="after_day">
-        <a href="/change/<%= dateafter %>_<%= room.id %>"><img class="after_icon" src="/static/images/right.svg" /></a>
+      <!-- 予約済情報-->
+      <% if (yoyakued) { %>
+        <form name="cancel_yoyaku" method="POST" action="/cancelyoyaku">
+          <div class="yoyakued">
+            <a href="/change/<%= yoyakued.ymd_yoyaku %>_<%= yoyakued.id_room %>">
+              <%= yoyakued.ymd_yoyaku.slice(0,4) %>/<%= yoyakued.ymd_yoyaku.slice(4,6) %>/<%= yoyakued.ymd_yoyaku.slice(-2) %>  
+              <%= yoyakued.name_room %>
+              <%= yoyakued.time_start.slice(0,2) %>:<%= yoyakued.time_start.slice(-2) %>～<%= yoyakued.time_end.slice(0,2) %>:<%= yoyakued.time_end.slice(-2) %>
+            </a>
+            <img class="cancel_btn_icon" id="btnCancel" src="/static/images/cancel.svg" />
+          </div>
+          <input type="hidden" name="ymdhms_add" value="<%= yoyakued.ymdhms_add %>" />
+        </form>
+      <% } %>
+      <!-- 部屋情報 -->
+      <div class="rooms">
+        <% rooms.forEach((r) => { %>
+          <% if (r.id === room.id) { %>
+            <div class="room_current">
+              <%= r.name %>
+            </div>
+          <% }else { %>
+            <a class="room" href="/change/<%= date %>_<%= r.id %>">
+              <div><%= r.name %></div>
+            </a>
+          <% } %>
+        <% }) %>
       </div>
-    </div>
-    <input type="hidden" id="select_id_room" value="<%= room.id %>" />
+      <div class="day">
+        <div class="before_day">
+          <a href="/change/<%= datebefore %>_<%= room.id %>"><img class="before_icon" src="/static/images/left.svg" /></a>
+        </div>
+        <input type="text" class="current_day flatpickr2" id="select_date_btn" name="ymd_target" value="<%= date.slice(0,4) %>/<%= date.slice(4,6) %>/<%= date.slice(-2) %>">
+        <div class="after_day">
+          <a href="/change/<%= dateafter %>_<%= room.id %>"><img class="after_icon" src="/static/images/right.svg" /></a>
+        </div>
+      </div>
+      <input type="hidden" id="select_id_room" value="<%= room.id %>" />
+    </section>
     <!-- 予約情報　-->
     <% if (yoyakus) { %>
     <%  const keys = Object.keys(yoyakus).sort() %>
@@ -119,8 +123,11 @@
 
     // 時間選択サブ画面の表示・非表示切り替え
     const select_time = (time) => {
+      scrollTo(0, 0);
       let time_start = document.getElementById("select_time_start");
       time_start.value = time;
+      let time_start_label = document.getElementsByClassName("select_time_start_label")[0];
+      time_start_label.innerText = time.slice(0,2) + ":" + time.slice(-2);
       const select_time_end_1 = document.getElementById("select_time_end_1");
       const select_time_end_2 = document.getElementById("select_time_end_2");
       const select_time_end_3 = document.getElementById("select_time_end_3");
@@ -133,12 +140,12 @@
       const select_time_end_label_4 = document.getElementById("select_time_end_label_4");
       const select_time_end_label_5 = document.getElementById("select_time_end_label_5");
       const select_time_end_label_6 = document.getElementById("select_time_end_label_6");
-      select_time_end_label_1.innerText = getHhmmByM(getMByHhmm(time)+30)
-      select_time_end_label_2.innerText = getHhmmByM(getMByHhmm(time)+60)
-      select_time_end_label_3.innerText = getHhmmByM(getMByHhmm(time)+90)
-      select_time_end_label_4.innerText = getHhmmByM(getMByHhmm(time)+120)
-      select_time_end_label_5.innerText = getHhmmByM(getMByHhmm(time)+150)
-      select_time_end_label_6.innerText = getHhmmByM(getMByHhmm(time)+180)
+      select_time_end_label_1.innerText = getHhmmByM(getMByHhmm(time)+30).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+30).slice(-2);
+      select_time_end_label_2.innerText = getHhmmByM(getMByHhmm(time)+60).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+60).slice(-2);
+      select_time_end_label_3.innerText = getHhmmByM(getMByHhmm(time)+90).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+90).slice(-2);
+      select_time_end_label_4.innerText = getHhmmByM(getMByHhmm(time)+120).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+120).slice(-2);
+      select_time_end_label_5.innerText = getHhmmByM(getMByHhmm(time)+150).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+150).slice(-2);
+      select_time_end_label_6.innerText = getHhmmByM(getMByHhmm(time)+180).slice(0,2) + ":" + getHhmmByM(getMByHhmm(time)+180).slice(-2);
       select_time_end_1.value = getHhmmByM(getMByHhmm(time)+30);
       select_time_end_2.value = getHhmmByM(getMByHhmm(time)+60);
       select_time_end_3.value = getHhmmByM(getMByHhmm(time)+90);
@@ -157,6 +164,7 @@
     // カレンダーで選択した場合の画面切り替え
     const select_date_btn = document.getElementById("select_date_btn");
     select_date_btn.addEventListener('change', () => {
+      scrollTo(0, 0);
       const id_room = document.getElementById("select_id_room");
       window.location = "/change/" + select_date_btn.value.replace(/\//g,"") + "_" + id_room.value;
     })

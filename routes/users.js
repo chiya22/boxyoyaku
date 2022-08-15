@@ -73,7 +73,7 @@ router.get('/request/:key', (req,res, next) => {
             req.flash("error", `メールアドレス【${retObjRequest.email}】はすでに登録されています。`);
             res.redirect("/users/requesterr");
           } else {
-            res.render('userForm', {
+            res.render('userform', {
               user: retObjRequest,
               mode: "add",
               key: key,
@@ -88,7 +88,7 @@ router.get('/request/:key', (req,res, next) => {
             req.flash("error", `メールアドレス【${retObjRequest.email}】は登録されていません。`);
             res.redirect("/users/requesterr");
           } else {
-            res.render('userForm', {
+            res.render('userform', {
               user: retObjUser,
               mode: "updpwd",
               key: key,
@@ -300,7 +300,7 @@ router.get('/updinfo', security.authorize(), (req,res,next) => {
     const retObjUser = await users.findPKey(req.user.id)
 
     if (retObjUser) {
-      res.render('userForm', {
+      res.render('userform', {
         user: retObjUser,
         mode: "upd",
         key: null,

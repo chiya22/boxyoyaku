@@ -54,7 +54,9 @@ router.get('/request/:key', (req,res, next) => {
     } else {
 
       // 登録リクエスト情報のレコードの有効期限が切れている場合はエラー画面へ
-      if (tool.getYYYYMMDD(new Date()) !== retObjRequest.ymd_limit) {
+      const current = tool.getYYYYMMDDhhmmss(new Date());
+      const requesttimeplus6 = tool.getPlus6hour(retObjRequest.ymdhms_limit);
+      if (tool.getYYYYMMDDhhmmss(new Date()) >= tool.getPlus6hour(retObjRequest.ymdhms_limit)) {
         req.flash("error", `有効期限が切れています`);
         res.redirect("/users/requesterr");
 
@@ -141,7 +143,7 @@ router.post('/request', (req, res, next) => {
       inObj.email = email;
       inObj.key = randomstring;
       inObj.kubun = 'adduser';
-      inObj.ymd_limit = tool.getYYYYMMDD(new Date());
+      inObj.ymdhms_limit = tool.getYYYYMMDDhhmmss(new Date());
       await request.insert(inObj);
 
       // 画面へリダイレクト
@@ -196,7 +198,7 @@ router.post('/request', (req, res, next) => {
       inObj.email = email;
       inObj.key = randomstring;
       inObj.kubun = 'updpwd';
-      inObj.ymd_limit = tool.getYYYYMMDD(new Date());
+      inObj.ymdhms_limit = tool.getYYYYMMDDhhmmss(new Date());
       await request.insert(inObj);
 
       // 画面へリダイレクト
@@ -218,10 +220,10 @@ router.post('/add', (req, res, next) => {
   } else {
     (async () => {
 
-      const retUserObj = await users.findPKey(req.body.email);
+      const retUserObj = await users.findPKey(req.body.id);
 
       if (retUserObj) {
-        req.flash("error", `メールアドレス【${req.body.email}】はすでに登録されています。別のメールアドレスを入力してください。`);
+        req.flash("error", `ID【${req.body.id}】はすでに登録されています。別のIDを入力してください。`);
         res.redirect(`/users/request/${req.body.key}`);
       } else {
         let inObjUser = {};
@@ -241,7 +243,7 @@ router.post('/add', (req, res, next) => {
         } catch (err) {
           // if (err.errno === 1062) {
           if (err.code === '23505') {
-            req.flash("error", `メールアドレス【${inObjUser.email}】はすでに登録されています。`);
+            req.flash("error", `ID【${inObjUser.id}】はすでに登録されています。`);
             res.redirect(`/users/request/${req.body.key}`);
           } else {
             throw err;

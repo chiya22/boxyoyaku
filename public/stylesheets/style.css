@@ -25,10 +25,15 @@ body {
 }
 
 .form_item_readonly_style {
-  color: #8a8a8a;
+  color: #000;
+  background-color: #bfcad8;
   height: 30px;
-  padding: 5px 5%;
-  font-size: 12px;
+  padding: 20px 5%;
+  border-radius: 27px;
+  background-clip: padding-box;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.8px;
   margin-bottom: 10px;
   text-align: left;
@@ -179,8 +184,13 @@ body {
 .section_header {
   position: -webkit-sticky;
   position: sticky;
-  top: 86px;
+  top: 85px;
   background-color: #fff;
+}
+
+.anchor {
+  padding-top: 300px;
+  margin-top: -300px;
 }
 
 .select_time_area {
@@ -460,6 +470,16 @@ body {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+.userform_inner {
+  text-align: center;
+}
+
+.userform_msg {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px auto 20px auto;
 }
 
 .err_inner {

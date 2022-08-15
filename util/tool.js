@@ -106,6 +106,23 @@ const getHhmmByM = (m) => {
   }
 }
 
+/**
+ * 引数で渡された年月日時分秒の6時間後の年月日時分秒を取得する
+ * @param {*} yyyymmddhhmmss 
+ */
+const getPlus6hour = (yyyymmddhhmmss) => {
+
+  let afterdate = new Date(yyyymmddhhmmss.slice(0, 4), yyyymmddhhmmss.slice(4,6),yyyymmddhhmmss.slice(6,8),yyyymmddhhmmss.slice(8,10),yyyymmddhhmmss.slice(10,12),yyyymmddhhmmss.slice(12,14));
+  afterdate.setHours(afterdate.getHours() + 6);
+  let tmp;
+  tmp = '' + afterdate.getFullYear();
+  tmp += '' + ('0' + (afterdate.getMonth())).slice(-2);
+  tmp += '' + ('0' + afterdate.getDate()).slice(-2);
+  tmp += '' + ('0' + afterdate.getHours()).slice(-2);
+  tmp += '' + ('0' + afterdate.getMinutes()).slice(-2);
+  tmp += '' + ('0' + afterdate.getSeconds()).slice(-2);
+  return tmp
+}
 
 module.exports = {
   returnvalue,
@@ -116,4 +133,5 @@ module.exports = {
   getYyyymmddByYyyymm,
   getMByHhmm,
   getHhmmByM,
+  getPlus6hour,
 };

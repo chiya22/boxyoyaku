@@ -12,7 +12,6 @@ body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
-
 // 共通部分
 .form_item_style {
   color: #333;
@@ -33,10 +32,16 @@ body {
   }
 }
 .form_item_readonly_style {
-  color: #8a8a8a;
+  color: #000;
+  background-color: #bfcad8;
   height: 30px;
-  padding: 5px 5%;
-  font-size: 12px;
+  padding: 20px 5%;
+  // border: 1px solid #ccc;
+  border-radius: 27px;
+  background-clip: padding-box;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.8px;
   margin-bottom: 10px;
   text-align: left;
@@ -180,8 +185,14 @@ body {
 // 上に固定する部分
 .section_header {
   position: sticky;
-  top: 86px;
+  top: 85px;
   background-color: #fff;
+}
+
+// アンカー位置を調整
+.anchor {
+  padding-top:300px;
+  margin-top:-300px;
 }
 
 // ★★時間選択メッセージエリア
@@ -445,6 +456,17 @@ body {
   font-weight: 600;
   margin-bottom: 20px;
 }
+
+// ★ユーザー情報編集画面
+.userform_inner {
+  text-align: center;
+}
+.userform_msg {
+  font-size:16px;
+  font-weight: 600;
+  margin: 10px auto 20px auto;
+}
+
 
 
 // ★エラー画面

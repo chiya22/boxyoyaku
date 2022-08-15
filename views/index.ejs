@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
   <head>
-    <title>予約システム</title>
+    <title>CPS予約システム</title>
     <%- include("./common/stylesheets.ejs") %>
   </head>
 </head>
@@ -107,8 +107,8 @@
     <% if (yoyakus) { %>
     <%  const keys = Object.keys(yoyakus).sort() %>
     <%  for (key of keys) { %>
-        <div class="yoyaku_rows" id="<%= key %>">
-          <div class="yoyaku_time_row"><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
+        <div class="yoyaku_rows anchor" id="<%= key %>">
+          <div class="yoyaku_time_row" id="<%= key %>"><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
           <% if (yoyakus[key]) { %>
             <div class="yoyaku_yoyakued_row"><%= yoyakus[key].name %></div>
           <% } else { %>

@@ -31,7 +31,7 @@ const find = async () => {
 
 const insert = async (inObj) => {
     try {
-        const query = "insert into request ( email, key, kubun, ymd_limit ) values ('" + inObj.email + "','" + inObj.key + "','" + inObj.kubun + "','" + inObj.ymd_limit + "')";
+        const query = "insert into request ( email, key, kubun, ymdhms_limit ) values ('" + inObj.email + "','" + inObj.key + "','" + inObj.kubun + "','" + inObj.ymdhms_limit + "')";
         logger.info(query);
         const retObj = await knex.raw(query)
         return retObj;

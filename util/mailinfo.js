@@ -36,11 +36,11 @@ const send = (mail_to,title, content) => {
   let message = {
       from: process.env.MAIL_FROM,
       // テスト用として宛先を強制的に変更
-      to: 'yoshida@yamori.jp',
-      // to: mail_to,
+      // to: 'yoshida@yamori.jp',
+      to: mail_to,
       // テスト用として件名に【テスト】を追加
-      subject: `【吉田テスト】${title}`,
-      // subject: title,
+      // subject: `【吉田テスト】${title}`,
+      subject: title,
       text: content,
   };
 

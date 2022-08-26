@@ -116,12 +116,28 @@ const getPlus6hour = (yyyymmddhhmmss) => {
   afterdate.setHours(afterdate.getHours() + 6);
   let tmp;
   tmp = '' + afterdate.getFullYear();
-  tmp += '' + ('0' + (afterdate.getMonth())).slice(-2);
+  tmp += '' + ('0' + (afterdate.getMonth()+1)).slice(-2);
   tmp += '' + ('0' + afterdate.getDate()).slice(-2);
   tmp += '' + ('0' + afterdate.getHours()).slice(-2);
   tmp += '' + ('0' + afterdate.getMinutes()).slice(-2);
   tmp += '' + ('0' + afterdate.getSeconds()).slice(-2);
   return tmp
+}
+
+/**
+ * 現在の日付より1時間前の日付を取得する
+ */
+const getCalchour = (num) => {
+  let afterdate = new Date();
+  afterdate.setHours(afterdate.getHours() + num);
+  let tmp;
+  tmp = '' + afterdate.getFullYear();
+  tmp += '' + ('0' + (afterdate.getMonth()+1)).slice(-2);
+  tmp += '' + ('0' + afterdate.getDate()).slice(-2);
+  tmp += '' + ('0' + afterdate.getHours()).slice(-2);
+  tmp += '' + ('0' + afterdate.getMinutes()).slice(-2);
+  tmp += '' + ('0' + afterdate.getSeconds()).slice(-2);
+  return tmp  
 }
 
 module.exports = {
@@ -134,4 +150,5 @@ module.exports = {
   getMByHhmm,
   getHhmmByM,
   getPlus6hour,
+  getCalchour,
 };

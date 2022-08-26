@@ -9,6 +9,19 @@
   </head>
 </head>
 <body>
+  <!-- ルール表示 -->
+  <div class="rule_area">
+    <div class="rule_area_inner">
+      <div class="rule_area_text">
+        <h2 class="rule_area_header">予約ルール</h2>
+        <br>
+        <p>・1回の予約は3時間までです。</p>
+        <p>・1人1予約のみです。</p>
+        <p>・予約時間経過後に再度予約が可能です。</p>
+      </div>
+      <button class="rule_area_closebtn">閉じる</button>
+    </div>
+  </div>
   <!-- 確認メッセージ -->
   <div class="msg_confirm">
     <div class="msgarea_confirm">
@@ -107,19 +120,36 @@
     <% if (yoyakus) { %>
     <%  const keys = Object.keys(yoyakus).sort() %>
     <%  for (key of keys) { %>
-        <div class="yoyaku_rows anchor" id="<%= key %>">
-          <div class="yoyaku_time_row" id="<%= key %>"><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
-          <% if (yoyakus[key]) { %>
-            <div class="yoyaku_yoyakued_row"><%= yoyakus[key].name %></div>
-          <% } else { %>
-            <% let nm_func = "select_time(\"" + key + "\")" %>
-            <input class="yoyaku_yoyaku_row" type="button" name="select_time_btn" value="" onclick=<%= nm_func %> />
-          <% } %>
-        </div>
+        <% if ((date + key) > datebefore1hour) { %>
+          <div class="yoyaku_rows anchor" id="<%= key %>">
+            <div class="yoyaku_time_row" id="<%= key %>"><%= key.slice(0,2) %>:<%= key.slice(-2) %></div>
+            <% if (yoyakus[key]) { %>
+              <div class="yoyaku_yoyakued_row"><%= yoyakus[key].name %></div>
+            <% } else { %>
+              <% let nm_func = "select_time(\"" + key + "\")" %>
+              <input class="yoyaku_yoyaku_row" type="button" name="select_time_btn" value="" onclick=<%= nm_func %> />
+            <% } %>
+          </div>
+        <% } %>
     <%  } %>
     <% } %>
   </div>
   <script>
+    // ルールの確認メッセージエリアの表示
+    let toplogo = document.getElementById("top_logo");
+    if (toplogo) {
+      toplogo.addEventListener("click", (e) => {
+        scrollTo(0, 0);
+        let msg = document.getElementsByClassName("rule_area")[0];
+        msg.style.visibility = "visible";
+      });
+    }
+    // ルール確認ダイアログで「閉じる」を押した場合
+    let closebtn = document.getElementsByClassName("rule_area_closebtn")[0];
+    closebtn.addEventListener('click', () => {
+        let rule = document.getElementsByClassName("rule_area")[0];
+        rule.style.visibility = "hidden";
+    });
 
     // 時間選択サブ画面の表示・非表示切り替え
     const select_time = (time) => {

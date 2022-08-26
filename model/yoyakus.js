@@ -1,6 +1,7 @@
 const knex = require('../db/knex.js').connect();
 const log4js = require("log4js");
 const logger = log4js.configure("./config/log4js-config.json").getLogger();
+const tool = require("../util/tool");
 
 const findPKey = async (id,ymdhms_add) => {
     try {
@@ -18,7 +19,9 @@ const findPKey = async (id,ymdhms_add) => {
  */
 const findYoyakuByUser = async (id) => {
     try {
-        const query = "SELECT a.*, r.name AS name_room FROM (SELECT * FROM yoyakus a WHERE a.id_user = '" + id + "' AND a.ymdhms_del = '99991231235959') a LEFT OUTER JOIN rooms r ON a.id_room = r.id"
+        const yyyymmddhhmm = tool.getYYYYMMDDhhmmss(new Date()).slice(0,12);
+        const query = "SELECT a.*, r.name AS name_room FROM (SELECT * FROM yoyakus a WHERE a.id_user = '" + id + "' AND concat(a.ymd_yoyaku, a.time_end) >= '" + yyyymmddhhmm + "' and a.ymdhms_del = '99991231235959') a LEFT OUTER JOIN rooms r ON a.id_room = r.id"
+        // const query = "SELECT a.*, r.name AS name_room FROM (SELECT * FROM yoyakus a WHERE a.id_user = '" + id + "' AND a.ymdhms_del = '99991231235959') a LEFT OUTER JOIN rooms r ON a.id_room = r.id"
         logger.info(query);
         const retObj = await knex.raw(query);
         return retObj.rows[0];

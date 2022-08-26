@@ -27,8 +27,17 @@
         </div>
       <% } %>
     <% } %>
+    <!-- ルール表示 -->
+    <div class="rule">
+      <h2 class="rule_title">予約ルール</h2>
+      <div class="rule_content">
+        <p>・1回の予約は<span class="rule_color_red">3時間</span>までです。</p>
+        <p>・1人1予約のみです。</p>
+        <p>・予約時間経過後に再度予約が可能です。</p>
+      </div>
+    </div>
     <form action="/login" method="post">
-      <div class="login_form_area">
+        <div class="login_form_area">
         <div>
           <input class="form_item_style" type="text" name="username" placeholder="ID" autofocus />
         </div>

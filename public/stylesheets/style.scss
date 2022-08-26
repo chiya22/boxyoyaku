@@ -59,7 +59,8 @@ body {
   font-size: 14px;
   text-align: center;
   font-weight: 600;
-  &:hover {
+  transition: all 0.3s ease-in-out;
+    &:hover {
     background-color: #fff;
     color: #000;
     transform: translateY(-5px);
@@ -80,6 +81,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   border: 1px solid #000;
+  transition: all 0.3s ease-in-out;
   &:hover {
     background-color: #000;
     color: #fff;
@@ -119,6 +121,30 @@ body {
   margin: auto;
   padding-bottom:20px;
 }
+.rule {
+  width: 300px;
+  margin: 0 auto;
+}
+.rule_title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  background-color: #F93115;
+  padding: 5px 0;
+  color:#fff;
+}
+.rule_content {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  margin:0 auto;
+  margin-bottom: 15px;
+}
+.rule_color_red {
+  color:#F93115;
+}
+
 // フォーム入力エリア
 .login_header,
 .request_header {
@@ -174,6 +200,9 @@ body {
 .header_logout_icon_img {
   padding-top:3px;
   width: 33px;
+}
+.header_left {
+  cursor: pointer;
 }
 
 // ★メイン部分
@@ -255,7 +284,7 @@ body {
 }
 .select_time_radio_label {
   display: inline-block;
-  transition: all .2s;
+  transition: all 0.2s;
   width: 140px;
   font-size: 18px;
   font-weight: 600;
@@ -265,6 +294,65 @@ body {
 .select_time_radio_input:checked + .select_time_radio_label {
   background: #f93115;
   color: #fff;
+}
+
+// ★★ルール確認エリア
+.rule_area {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  visibility: hidden;
+}
+.rule_area_inner {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:#fff;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  font-weight: 600;
+  padding: 2rem;
+}
+.rule_area_header {
+  position: relative;
+  text-align: center;
+  font-size:20px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    width: 100%;
+    height: 10px;
+    background-color: #F93115;
+    opacity: 0.3;
+    z-index: -1;
+  }
+}
+.rule_area_text {
+  text-align: left;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+.rule_area_closebtn {
+  font-size: 16px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 15px;
+  margin: 0 15px;
+}
+.rule_area_closebtn:hover {
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 // ★★キャンセル確認エリア
